@@ -2,64 +2,147 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="relative min-h-screen w-full bg-[#f8f8f8] grid-bg font-jost text-[#1a1a1a] overflow-hidden">
+      {/* Background Red Accents (SVGs) */}
+      <div className="absolute top-[20%] right-[15%] w-[400px] animate-fade-in opacity-90 pointer-events-none z-0">
+        <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+          {/* The main pen tool curve from the design */}
+          <path d="M50 200C100 100 250 50 350 150C380 180 340 250 300 150C280 100 320 50 380 20" stroke="#d32f2f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+
+          {/* Nodes on the path */}
+          <circle cx="50" cy="200" r="3" fill="#d32f2f" />
+          <circle cx="175" cy="125" r="3" fill="#d32f2f" />
+          <circle cx="350" cy="150" r="3" fill="#d32f2f" />
+          <circle cx="380" cy="20" r="3" fill="#d32f2f" />
+
+          {/* Construction lines */}
+          <path d="M30 220L70 180" stroke="#d32f2f" strokeWidth="1" opacity="0.4" />
+          <path d="M360 40L400 0" stroke="#d32f2f" strokeWidth="1" opacity="0.4" />
+
+          {/* Pen tool nib near the top right node */}
+          <g transform="translate(370, 30) rotate(-45)">
+            <path d="M0 0L8 16L0 20L-8 16L0 0Z" fill="black" />
+            <circle cx="0" cy="14" r="1.5" fill="white" />
+          </g>
+        </svg>
+      </div>
+
+      {/* Decorative SVGs provided by user */}
+      <div className="absolute top-10 right-20 opacity-10 w-8 h-8 pointer-events-none">
+        <Image src="/globe.svg" alt="Globe" width={32} height={32} />
+      </div>
+      <div className="absolute bottom-20 left-1/4 opacity-10 w-8 h-8 pointer-events-none">
+        <Image src="/window.svg" alt="Window" width={32} height={32} />
+      </div>
+      <div className="absolute top-1/2 left-10 opacity-10 w-6 h-6 pointer-events-none">
+        <Image src="/file.svg" alt="File" width={24} height={24} />
+      </div>
+
+      <div className="relative z-10 p-12 md:p-24 min-h-screen flex flex-col justify-between">
+        {/* Top Section: Date and Framed Image */}
+        <div className="flex flex-col md:flex-row gap-16 items-start">
+          <div className="relative">
+            <span className="text-sm font-black tracking-widest text-[#d32f2f] mb-4 block">
+              2022-2024
+            </span>
+
+            {/* Main Image Framing */}
+            <div className="relative w-64 h-80 bg-white border border-[#e5e5e5] p-1 shadow-sm">
+              <div className="relative w-full h-full overflow-hidden">
+                <Image
+                  src="/Portfolio.jpg"
+                  alt="Portfolio Silhouette"
+                  fill
+                  className="object-cover grayscale brightness-110 opacity-90"
+                />
+              </div>
+              {/* Red Construction Box */}
+              <div className="absolute -top-4 -left-4 -right-4 -bottom-4 border border-[#d32f2f]/40 pointer-events-none">
+                <div className="absolute -top-1 -left-1 w-2.5 h-2.5 bg-[#d32f2f] border border-white" />
+                <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[#d32f2f] border border-white" />
+                <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5 bg-[#d32f2f] border border-white" />
+                <div className="absolute -bottom-1 -right-1 w-2.5 h-2.5 bg-[#d32f2f] border border-white" />
+
+                {/* Node markers in middle of lines */}
+                <div className="absolute top-1/2 -left-1.25 w-2 h-2 bg-white border border-[#d32f2f] -translate-y-1/2" />
+                <div className="absolute top-1/2 -right-1.25 w-2 h-2 bg-white border border-[#d32f2f] -translate-y-1/2" />
+              </div>
+
+              {/* Red Scribble Accent (Left) */}
+              <div className="absolute -left-16 top-[20%] opacity-80 scale-150">
+                <svg width="24" height="40" viewBox="0 0 24 40">
+                  <path d="M4 4L20 12M4 12L20 20M4 20L20 28M4 28L20 36" stroke="#d32f2f" strokeWidth="1.5" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          {/* Design Categories Box */}
+          <div className="mt-8 md:mt-32 max-w-sm">
+            <div className="border border-dashed border-[#1a1a1a]/40 p-10 relative bg-white/50 backdrop-blur-[1px]">
+              <ul className="space-y-3 text-sm font-black tracking-tight uppercase">
+                <li>Branding Identitys</li>
+                <li>Video Making</li>
+                <li>3D Modeling & Interactive</li>
+                <li>Software Development</li>
+              </ul>
+              {/* Vision Description - 'The thing that describes it all' */}
+              <div className="mt-8 pt-8 border-t border-[#1a1a1a]/10">
+                <p className="text-[10px] md:text-xs font-bold leading-relaxed tracking-tight text-[#1a1a1a]/60 uppercase italic">
+                  Bridging the gap between artistic vision, motion, and full-stack technical infrastructure.
+                </p>
+              </div>
+
+              {/* Pointer Icon */}
+              <div className="absolute -bottom-4 right-4">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M5 2L18 8L5 14V2Z" fill="black" />
+                  <path d="M12 10L16 16" stroke="black" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Section: Large Typography */}
+        <div className="relative mt-auto">
+          <h1 className="flex flex-col select-none">
+            <span className="text-[12rem] md:text-[20rem] font-black leading-[0.7] tracking-tighter uppercase">
+              <span className="text-[#d32f2f]">P</span>o<span className="text-[#d32f2f]">r</span>t
+            </span>
+            <div className="relative ml-[22%]">
+              <span className="text-[10rem] md:text-[16rem] font-black leading-[0.8] tracking-tighter text-outline block group uppercase">
+                <span className="text-outline-red">F</span>o<span className="text-outline-red">l</span>i<span className="text-outline-red">o</span>
+                {/* Node Indicators on "folio" text */}
+                <div className="absolute top-[10%] left-0 w-4 h-4 border-2 border-[#d32f2f] bg-white -translate-x-1/2 rounded-none" />
+                <div className="absolute top-[15%] left-1/4 w-3 h-3 bg-black rounded-full" />
+                <div className="absolute top-1/2 right-1/2 w-4 h-4 border-2 border-black bg-white -translate-y-1/2 rounded-none" />
+                <div className="absolute top-1/2 right-[15%] w-3 h-3 bg-[#d32f2f] rounded-full" />
+                <div className="absolute bottom-[10%] right-[5%] w-4 h-4 border-2 border-black bg-white translate-x-1/2 translate-y-1/2" />
+
+                {/* Red Scribble Accent (Bottom Right) */}
+                <div className="absolute -bottom-10 -right-20 opacity-80 scale-150">
+                  <svg width="60" height="40" viewBox="0 0 60 40">
+                    <path d="M10 5L50 35M20 5L60 35" stroke="#d32f2f" strokeWidth="2" />
+                  </svg>
+                </div>
+              </span>
+            </div>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Footer Credit */}
+        <div className="absolute bottom-10 right-10 flex items-center gap-8 animate-fade-in">
+          <div className="flex flex-col items-end gap-1">
+            <span className="text-[10px] font-black tracking-[0.3em] opacity-30 uppercase">Design by</span>
+            <span className="text-xs font-black uppercase tracking-tight">4WARD</span>
+          </div>
+          <div className="w-12 h-12 bg-[#1a1a1a] flex items-center justify-center p-3 shadow-xl">
+            {/* Using vercel.svg as the logomark in bottom right to align with "SVG I gave you" */}
+            <Image src="/vercel.svg" alt="Logomark" width={24} height={24} className="invert" />
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
