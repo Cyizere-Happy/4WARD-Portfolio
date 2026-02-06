@@ -12,8 +12,49 @@
   --color-foreground: var(--foreground);
   --color-accent-red: var(--accent-red);
   --font-jost: var(--jost);
+
+  /* Define animations and keyframes in theme for proper v4 integration */
+  --animate-letter-in: letterIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-push-down-top: pushDownTop 1.4s cubic-bezier(0.85, 0, 0.15, 1) both;
+  --animate-push-down-text: pushDownText 1.4s cubic-bezier(0.85, 0, 0.15, 1) both;
+  --animate-fade-in: fadeIn 1s ease-out both;
+
+  @keyframes letterIn {
+    from {
+      opacity: 0;
+      transform: translateY(-30px) scale(0.9);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes pushDownTop {
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pushDownText {
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 0.9;
+    }
+  }
 }
 
+/* Base Styles */
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -40,23 +81,23 @@ body {
   color: transparent;
 }
 
+/* Custom Utilities */
+@layer utilities {
+  .delay-push {
+    animation-delay: 3s !important;
+  }
+
+  .delay-final {
+    animation-delay: 5s !important;
+  }
+
+  /* Force hidden state for delayed fade-ins */
+  .wait-for-animation {
+    opacity: 0;
+  }
+}
+
 .font-vector {
   font-family: var(--font-jost);
   letter-spacing: -0.05em;
-}
-
-@layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 1s ease-out forwards;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }

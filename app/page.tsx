@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen w-full bg-[#f8f8f8] grid-bg font-jost text-[#1a1a1a] overflow-hidden">
       {/* Background Red Accents (SVGs) */}
-      <div className="absolute top-[20%] right-[15%] w-[400px] animate-fade-in opacity-90 pointer-events-none z-0">
+      <div className="absolute top-[20%] right-[15%] w-[400px] animate-fade-in delay-final wait-for-animation pointer-events-none z-0">
         <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
           {/* The main pen tool curve from the design */}
           <path d="M50 200C100 100 250 50 350 150C380 180 340 250 300 150C280 100 320 50 380 20" stroke="#d32f2f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -27,20 +27,22 @@ export default function Home() {
         </svg>
       </div>
 
-      {/* Decorative SVGs provided by user */}
-      <div className="absolute top-10 right-20 opacity-10 w-8 h-8 pointer-events-none">
-        <Image src="/globe.svg" alt="Globe" width={32} height={32} />
-      </div>
-      <div className="absolute bottom-20 left-1/4 opacity-10 w-8 h-8 pointer-events-none">
-        <Image src="/window.svg" alt="Window" width={32} height={32} />
-      </div>
-      <div className="absolute top-1/2 left-10 opacity-10 w-6 h-6 pointer-events-none">
-        <Image src="/file.svg" alt="File" width={24} height={24} />
-      </div>
-
       <div className="relative z-10 p-12 md:p-24 min-h-screen flex flex-col justify-between">
+        {/* Decorative SVGs moving with the push */}
+        <div className="animate-push-down-top delay-push absolute inset-0 pointer-events-none">
+          <div className="absolute top-10 right-20 opacity-10 w-8 h-8">
+            <Image src="/globe.svg" alt="Globe" width={32} height={32} />
+          </div>
+          <div className="absolute bottom-20 left-1/4 opacity-10 w-8 h-8">
+            <Image src="/window.svg" alt="Window" width={32} height={32} />
+          </div>
+          <div className="absolute top-1/2 left-10 opacity-10 w-6 h-6">
+            <Image src="/file.svg" alt="File" width={24} height={24} />
+          </div>
+        </div>
+
         {/* Top Section: Date and Framed Image */}
-        <div className="flex flex-col md:flex-row gap-16 items-start">
+        <div className="animate-push-down-top delay-push flex flex-col md:flex-row gap-16 items-start relative z-20">
           <div className="relative">
             <span className="text-sm font-black tracking-widest text-[#d32f2f] mb-4 block">
               2022-2024
@@ -104,15 +106,34 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Bottom Section: Large Typography */}
-        <div className="relative mt-auto">
+        {/* Bottom Typography Section - Raised to Front */}
+        <div className="relative mt-auto z-50 animate-push-down-text delay-push">
           <h1 className="flex flex-col select-none">
-            <span className="text-[12rem] md:text-[20rem] font-black leading-[0.7] tracking-tighter uppercase">
-              <span className="text-[#d32f2f]">P</span>o<span className="text-[#d32f2f]">r</span>t
+            <span className="text-[12rem] md:text-[20rem] font-black leading-[0.7] tracking-tighter uppercase flex">
+              {"Port".split("").map((char, i) => (
+                <span
+                  key={i}
+                  className={`animate-letter-in ${char.toLowerCase() === "o" || char.toLowerCase() === "t"
+                    ? "text-[#d32f2f]"
+                    : ""
+                    }`}
+                  style={{ animationDelay: `${i * 0.2}s` }}
+                >
+                  {char}
+                </span>
+              ))}
             </span>
             <div className="relative ml-[22%]">
-              <span className="text-[10rem] md:text-[16rem] font-black leading-[0.8] tracking-tighter text-outline block group uppercase">
-                <span className="text-outline-red">F</span>o<span className="text-outline-red">l</span>i<span className="text-outline-red">o</span>
+              <span className="text-[10rem] md:text-[16rem] font-black leading-[0.8] tracking-tighter text-outline block group uppercase flex">
+                {"Folio".split("").map((char, i) => (
+                  <span
+                    key={i}
+                    className="animate-letter-in"
+                    style={{ animationDelay: `${(i + 4) * 0.2}s` }}
+                  >
+                    {char}
+                  </span>
+                ))}
                 {/* Node Indicators on "folio" text */}
                 <div className="absolute top-[10%] left-0 w-4 h-4 border-2 border-[#d32f2f] bg-white -translate-x-1/2 rounded-none" />
                 <div className="absolute top-[15%] left-1/4 w-3 h-3 bg-black rounded-full" />
