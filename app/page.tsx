@@ -1,33 +1,33 @@
 import Image from "next/image";
+import AboutCarousel from "./components/AboutCarousel";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen w-full bg-[#f8f8f8] grid-bg font-jost text-[#1a1a1a] overflow-hidden">
-      {/* Background Red Accents (SVGs) */}
-      <div className="absolute top-[20%] right-[15%] w-[400px] animate-fade-in delay-final wait-for-animation pointer-events-none z-0">
-        <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-          {/* The main pen tool curve from the design */}
-          <path d="M50 200C100 100 250 50 350 150C380 180 340 250 300 150C280 100 320 50 380 20" stroke="#d32f2f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-
-          {/* Nodes on the path */}
-          <circle cx="50" cy="200" r="3" fill="#d32f2f" />
-          <circle cx="175" cy="125" r="3" fill="#d32f2f" />
-          <circle cx="350" cy="150" r="3" fill="#d32f2f" />
-          <circle cx="380" cy="20" r="3" fill="#d32f2f" />
-
-          {/* Construction lines */}
-          <path d="M30 220L70 180" stroke="#d32f2f" strokeWidth="1" opacity="0.4" />
-          <path d="M360 40L400 0" stroke="#d32f2f" strokeWidth="1" opacity="0.4" />
-
-          {/* Pen tool nib near the top right node */}
-          <g transform="translate(370, 30) rotate(-45)">
-            <path d="M0 0L8 16L0 20L-8 16L0 0Z" fill="black" />
-            <circle cx="0" cy="14" r="1.5" fill="white" />
-          </g>
-        </svg>
-      </div>
-
+    <main className="relative min-h-screen w-full bg-[#f8f8f8] grid-bg font-jost text-[#1a1a1a] overflow-x-hidden">
       <div className="relative z-10 p-12 md:p-24 min-h-screen flex flex-col justify-between">
+        {/* Background Red Accents (SVGs) - Moved inside hero container */}
+        <div className="absolute top-[20%] right-[15%] w-[400px] animate-fade-in delay-final wait-for-animation pointer-events-none z-0">
+          <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+            {/* The main pen tool curve from the design */}
+            <path d="M50 200C100 100 250 50 350 150C380 180 340 250 300 150C280 100 320 50 380 20" stroke="#d32f2f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+
+            {/* Nodes on the path */}
+            <circle cx="50" cy="200" r="3" fill="#d32f2f" />
+            <circle cx="175" cy="125" r="3" fill="#d32f2f" />
+            <circle cx="350" cy="150" r="3" fill="#d32f2f" />
+            <circle cx="380" cy="20" r="3" fill="#d32f2f" />
+
+            {/* Construction lines */}
+            <path d="M30 220L70 180" stroke="#d32f2f" strokeWidth="1" opacity="0.4" />
+            <path d="M360 40L400 0" stroke="#d32f2f" strokeWidth="1" opacity="0.4" />
+
+            {/* Pen tool nib near the top right node */}
+            <g transform="translate(370, 30) rotate(-45)">
+              <path d="M0 0L8 16L0 20L-8 16L0 0Z" fill="black" />
+              <circle cx="0" cy="14" r="1.5" fill="white" />
+            </g>
+          </svg>
+        </div>
         {/* Decorative SVGs moving with the push */}
         <div className="animate-push-down-top delay-push absolute inset-0 pointer-events-none">
           <div className="absolute top-10 right-20 opacity-10 w-8 h-8">
@@ -45,7 +45,7 @@ export default function Home() {
         <div className="animate-push-down-top delay-push flex flex-col md:flex-row gap-16 items-start relative z-20">
           <div className="relative">
             <span className="text-sm font-black tracking-widest text-[#d32f2f] mb-4 block">
-              2022-2024
+              2026-2027
             </span>
 
             {/* Main Image Framing */}
@@ -109,11 +109,11 @@ export default function Home() {
         {/* Bottom Typography Section - Raised to Front */}
         <div className="relative mt-auto z-50 animate-push-down-text delay-push">
           <h1 className="flex flex-col select-none">
-            <span className="text-[12rem] md:text-[20rem] font-black leading-[0.7] tracking-tighter uppercase flex">
-              {"Port".split("").map((char, i) => (
+            <span className="text-[8rem] md:text-[14rem] font-black leading-[0.7] tracking-tighter uppercase flex">
+              {"4WARD".split("").map((char, i) => (
                 <span
                   key={i}
-                  className={`animate-letter-in ${char.toLowerCase() === "o" || char.toLowerCase() === "t"
+                  className={`animate-letter-in ${char.toLowerCase() === "w" || char.toLowerCase() === "r"
                     ? "text-[#d32f2f]"
                     : ""
                     }`}
@@ -129,7 +129,7 @@ export default function Home() {
                   <span
                     key={i}
                     className="animate-letter-in"
-                    style={{ animationDelay: `${(i + 4) * 0.2}s` }}
+                    style={{ animationDelay: `${(i + 5) * 0.2}s` }}
                   >
                     {char}
                   </span>
@@ -164,6 +164,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <AboutCarousel />
     </main>
   );
 }
