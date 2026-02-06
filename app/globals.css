@@ -32,12 +32,20 @@
   }
 
   @keyframes pushDownTop {
+    from {
+      transform: translateY(-120%);
+    }
+
     to {
       transform: translateY(0);
     }
   }
 
   @keyframes pushDownText {
+    from {
+      transform: translateY(-65vh);
+    }
+
     to {
       transform: translateY(0);
     }
